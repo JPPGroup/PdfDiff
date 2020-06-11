@@ -1,0 +1,27 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:  
+  build:    
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2    
+    - name: Build and push Docker images
+      uses: docker/build-push-action@v1.1.0
+      with:    
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        repository: jppgroup/pdfdiff/pdfdiff            
+        tags: latest    
+        tag_with_ref: true        
+        always_pull: true        
+        add_git_labels: true    
+        push: true
+        dockerfile: src/PdfDiff/Dockerfile
