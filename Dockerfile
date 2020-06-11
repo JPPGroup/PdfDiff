@@ -7,10 +7,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["PdfDiff/PdfDiff.csproj", "PdfDiff/"]
-RUN dotnet restore "PdfDiff/PdfDiff.csproj"
+COPY ["src/PdfDiff/PdfDiff.csproj", "src/PdfDiff/"]
+RUN dotnet restore "src/PdfDiff/PdfDiff.csproj"
 COPY . .
-WORKDIR "/src/PdfDiff"
+WORKDIR "/src/src/PdfDiff"
 RUN dotnet build "PdfDiff.csproj" -c Release -o /app/build
 
 FROM build AS publish

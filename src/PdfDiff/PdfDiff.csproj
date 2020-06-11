@@ -6,6 +6,8 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <Platforms>x64</Platforms>
     <Nullable>enable</Nullable>
+    <DockerfileFile>..\..\Dockerfile</DockerfileFile>
+    <DockerfileContext>.</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>

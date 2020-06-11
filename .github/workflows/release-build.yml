@@ -23,5 +23,4 @@ jobs:
         tag_with_ref: true        
         always_pull: true        
         add_git_labels: true    
-        push: true
-        dockerfile: src/PdfDiff/Dockerfile
+        push: true       
