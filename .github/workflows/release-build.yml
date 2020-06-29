@@ -12,7 +12,7 @@ jobs:
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2    
-    - name: Build and push Docker images
+    - name: Build and push Docker image to GitHub Packages
       uses: docker/build-push-action@v1.1.0
       with:    
         username: ${{ github.actor }}
@@ -24,3 +24,15 @@ jobs:
         always_pull: true        
         add_git_labels: true    
         push: true       
+    # Temp build to also push to dickerhub until GitHub Packages work wioth containerd
+    - name: Build and push Docker image to DockerHub
+      uses: docker/build-push-action@v1.1.0
+      with:    
+        username: ${{ github.actor }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}        
+        repository: jppuk/pdfdiff
+        tags: latest    
+        tag_with_ref: true        
+        always_pull: true        
+        add_git_labels: true    
+        push: true     
