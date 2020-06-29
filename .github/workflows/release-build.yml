@@ -28,7 +28,7 @@ jobs:
     - name: Build and push Docker image to DockerHub
       uses: docker/build-push-action@v1.1.0
       with:    
-        username: ${{ github.actor }}
+        username: michaelliddiard
         password: ${{ secrets.DOCKERHUB_PASSWORD }}        
         repository: jppuk/pdfdiff
         tags: latest    
